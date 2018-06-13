@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('test','PHPUnitController@index');
+Route::post('test','PHPUnitController@jsonMatch');

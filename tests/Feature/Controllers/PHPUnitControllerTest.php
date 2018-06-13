@@ -13,8 +13,22 @@ class PHPUnitControllerTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
-    {
+    public function testExample() {
         $this->assertTrue(true);
     }
+
+    public function testStatus(){
+		$response = $this->get('/test');
+    	$response->assertStatus(200);
+	}
+
+	public function testExactJsonMatch(){
+		$response = $this->json('POST', '/test', ['name' => 'Sally']);
+
+		$response
+			->assertStatus(201)
+			->assertExactJson([
+				'created' => true,
+			]);
+	}
 }
